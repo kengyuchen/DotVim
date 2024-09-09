@@ -101,6 +101,7 @@ execute pathogen#infect()
 
 
 " Follow https://medium.com/rahasak/vim-as-my-latex-editor-f0c5d60c66fa
+" Use :LLPStartPreview to preview latex document
 autocmd Filetype tex setl updatetime=1
 let g:livepreview_previewer = 'open -a Preview'
 let g:livepreview_engine = '~/bin/pdflatex'
