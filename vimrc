@@ -98,3 +98,8 @@ set fileformat=unix
 
 " Follow github.com/tpope/vim-pathogen
 execute pathogen#infect()
+
+
+" Follow https://medium.com/rahasak/vim-as-my-latex-editor-f0c5d60c66fa
+autocmd Filetype tex setl updatetime=1
+let g:livepreview_previewer = 'open -a Preview'
