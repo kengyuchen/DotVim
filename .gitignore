@@ -1,0 +1,9 @@
+# from https://github.com/github/gitignore/blob/main/Global/Vim.gitignore
+
+# Temporary
+.netrwhist
+*~
+# Auto-generated tag files
+tags
+# Persistent undo
+[._]*.un~
