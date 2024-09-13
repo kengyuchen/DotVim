@@ -41,6 +41,7 @@ set bs=2		" allow backspacing over everything in insert mode
 set ai			" always set autoindenting on
 set viminfo='20,\"50	" read/write a .viminfo file, don't store more
 set showmatch
+set whichwrap+=<,>,[,]	" allow going to the next/last line with left/arrow keys
 
 " VIM 6.0,
 if version >= 600
@@ -102,8 +103,9 @@ execute pathogen#infect()
 
 " Follow https://medium.com/rahasak/vim-as-my-latex-editor-f0c5d60c66fa
 " Use :LLPStartPreview to preview latex document
-autocmd Filetype tex setl updatetime=1
+autocmd Filetype tex setl updatetime=2
 let g:livepreview_previewer = 'open -a Preview'
 let g:livepreview_engine = '~/bin/pdflatex'
+let g:livepreview_use_biber = 1
 
 filetype plugin indent on
