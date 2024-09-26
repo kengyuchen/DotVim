@@ -19,7 +19,7 @@ endif
 syntax on
 
 
-colo torte
+colo hybrid
 set background=dark
 set nu
 set tabstop=4
@@ -42,6 +42,13 @@ set ai			" always set autoindenting on
 set viminfo='20,\"50	" read/write a .viminfo file, don't store more
 set showmatch
 set whichwrap+=<,>,[,]	" allow going to the next/last line with left/arrow keys
+set laststatus=2 " always show the status line
+set noshowmode " -- INSERT -- is no longer used with lightline.vim installed
+
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ }
+
 
 " VIM 6.0,
 if version >= 600
