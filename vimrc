@@ -17,9 +17,14 @@ if filereadable($VIMRUNTIME . "/macros/matchit.vim")
 endif
 
 syntax on
+colorscheme hybrid
+" colorscheme onedark
+" lightline statusbar plugin
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ }
 
 
-colo hybrid
 set background=dark
 set nu
 set tabstop=4
@@ -44,11 +49,9 @@ set showmatch
 set whichwrap+=<,>,[,]	" allow going to the next/last line with left/arrow keys
 set laststatus=2 " always show the status line
 set noshowmode " -- INSERT -- is no longer used with lightline.vim installed
-
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ }
-
+set cursorline
+hi CursorLine cterm=NONE ctermbg=238
+hi Visual cterm=bold ctermbg=238
 
 " VIM 6.0,
 if version >= 600
