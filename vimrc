@@ -52,6 +52,7 @@ set noshowmode " -- INSERT -- is no longer used with lightline.vim installed
 set cursorline
 hi CursorLine cterm=NONE ctermbg=238
 hi Visual cterm=bold ctermbg=238
+hi LineNr ctermfg=grey
 
 " VIM 6.0,
 if version >= 600
@@ -119,3 +120,10 @@ let g:livepreview_engine = '~/bin/pdflatex'
 let g:livepreview_use_biber = 1
 
 filetype plugin indent on
+
+
+
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+let &t_te.="\e[0 q"
