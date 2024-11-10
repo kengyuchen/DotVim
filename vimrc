@@ -17,12 +17,17 @@ if filereadable($VIMRUNTIME . "/macros/matchit.vim")
 endif
 
 syntax on
-colorscheme hybrid
+" colorscheme hybrid
 " colorscheme onedark
+colorscheme catppuccin_macchiato " catppuccin_mocha, catppuccin_latte, catppuccin_frappe, catppuccin_macchiato
+
 " lightline statusbar plugin
+" let g:lightline = {
+"       \ 'colorscheme': 'wombat',
+"       \ }
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ }
+	\ 'colorscheme': 'catppuccin_macchiato',
+    \ }
 
 
 set background=dark
@@ -51,8 +56,10 @@ set laststatus=2 " always show the status line
 set noshowmode " -- INSERT -- is no longer used with lightline.vim installed
 set cursorline
 hi CursorLine cterm=NONE ctermbg=238
-hi Visual cterm=bold ctermbg=238
+" hi Visual cterm=bold ctermbg=238
 hi LineNr ctermfg=grey
+hi Pmenu ctermfg=15 ctermbg=0 " Change YouCompleteMe panel color
+
 
 " VIM 6.0,
 if version >= 600
@@ -65,7 +72,7 @@ else
 endif
 
 " Tab key binding
-if version >= 700
+if 0 " version >= 700
   map  <C-c> :tabnew<CR>
   imap <C-c> <ESC>:tabnew<CR>
   map  <C-k> :tabclose<CR>

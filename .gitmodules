@@ -11,3 +11,6 @@
 	path = bundle/YouCompleteMe
 	url = https://github.com/Valloric/YouCompleteMe.git
 	ignore = untracked
+[submodule "bundle/vim"]
+	path = bundle/vim
+	url = https://github.com/catppuccin/vim.git
