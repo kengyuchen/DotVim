@@ -114,7 +114,6 @@ set undodir=.undo/,~/.vimtmp/,/tmp/,.
 set fileformat=unix
 
 
-
 " Follow github.com/tpope/vim-pathogen
 execute pathogen#infect()
 
@@ -132,3 +131,9 @@ let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 let &t_te.="\e[0 q"
+
+
+" Set sage syntax
+augroup filetypedetect
+  au! BufRead,BufNewFile *.sage,*.spyx,*.pyx setfiletype python
+augroup END
