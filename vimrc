@@ -19,7 +19,7 @@ endif
 syntax on
 " colorscheme hybrid
 " colorscheme onedark
-colorscheme catppuccin_macchiato " catppuccin_mocha, catppuccin_latte, catppuccin_frappe, catppuccin_macchiato
+colorscheme catppuccin_mocha " catppuccin_mocha, catppuccin_latte, catppuccin_frappe, catppuccin_macchiato
 
 " lightline statusbar plugin
 " let g:lightline = {
@@ -59,7 +59,9 @@ hi CursorLine cterm=NONE ctermbg=238
 " hi Visual cterm=bold ctermbg=238
 hi LineNr ctermfg=grey
 hi Pmenu ctermfg=15 ctermbg=0 " Change YouCompleteMe panel color
-
+let g:loaded_youcompleteme = 1 " Disable Copilot by default
+" let g:copilot_filetypes = { '*': v:false } " Disable Copilot by default
+highlight CopilotSuggestion guifg=#90ACC0 ctermfg=10 " Change Copilot suggestion color
 
 " VIM 6.0,
 if version >= 600
@@ -116,14 +118,6 @@ set fileformat=unix
 
 " Follow github.com/tpope/vim-pathogen
 execute pathogen#infect()
-
-
-" Follow https://medium.com/rahasak/vim-as-my-latex-editor-f0c5d60c66fa
-" Use :LLPStartPreview to preview latex document
-autocmd Filetype tex setl updatetime=2
-let g:livepreview_previewer = 'open -a Preview'
-let g:livepreview_engine = '~/bin/pdflatex'
-let g:livepreview_use_biber = 1
 
 filetype plugin indent on
 
