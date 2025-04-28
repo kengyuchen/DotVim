@@ -1,4 +1,9 @@
-" This file is copied and modified from linux.csie.org
+" vimrc for vim
+" This file is copied and modified from NTU CSIE linux.csie.org
+
+" ================================
+" Configuration for Old Terminals and from Files 
+" ================================
 
 " If no screen, use color term
 if ($TERM == "vt100")
@@ -16,19 +21,26 @@ if filereadable($VIMRUNTIME . "/macros/matchit.vim")
  so $VIMRUNTIME/macros/matchit.vim
 endif
 
+" ================================
+" Colorscheme and Lightline
+" ================================
+
 syntax on
 " colorscheme hybrid
 " colorscheme onedark
 colorscheme catppuccin_mocha " catppuccin_mocha, catppuccin_latte, catppuccin_frappe, catppuccin_macchiato
 
 " lightline statusbar plugin
-" let g:lightline = {
-"       \ 'colorscheme': 'wombat',
-"       \ }
-let g:lightline = {
-	\ 'colorscheme': 'catppuccin_macchiato',
-    \ }
+let g:lightline = {'colorscheme': 'catppuccin_macchiato'} " 'wombat'
 
+hi CursorLine cterm=NONE ctermbg=238
+hi LineNr ctermfg=grey guifg=#999999
+hi Pmenu ctermfg=15 ctermbg=0 " Change YouCompleteMe panel color
+
+
+" ==================================
+" General Configuration
+" ==================================
 
 set background=dark
 set nu
@@ -40,7 +52,7 @@ set ruler
 set mouse=a
 set noeb
 set wrap
-set scrolloff=3 
+set scrolloff=3
 
 set nocompatible
 set wildmenu
@@ -55,13 +67,7 @@ set whichwrap+=<,>,[,]	" allow going to the next/last line with left/arrow keys
 set laststatus=2 " always show the status line
 set noshowmode " -- INSERT -- is no longer used with lightline.vim installed
 set cursorline
-hi CursorLine cterm=NONE ctermbg=238
-" hi Visual cterm=bold ctermbg=238
-hi LineNr ctermfg=grey
-hi Pmenu ctermfg=15 ctermbg=0 " Change YouCompleteMe panel color
-let g:loaded_youcompleteme = 1 " Disable Copilot by default
-" let g:copilot_filetypes = { '*': v:false } " Disable Copilot by default
-highlight CopilotSuggestion guifg=#90ACC0 ctermfg=10 " Change Copilot suggestion color
+set shortmess-=S
 
 " VIM 6.0,
 if version >= 600
@@ -74,16 +80,8 @@ else
 endif
 
 " Tab key binding
-if 0 " version >= 700
-  map  <C-c> :tabnew<CR>
-  imap <C-c> <ESC>:tabnew<CR>
-  map  <C-k> :tabclose<CR>
-  map  <C-p> :tabprev<CR>
-  imap <C-p> <ESC>:tabprev<CR>
-  map  <C-n> :tabnext<CR>
-  "imap <C-n> <ESC>:tabnext<CR>
-  map <F4> :set invcursorline<CR>
-
+if version >= 700
+  
   map g1 :tabn 1<CR>
   map g2 :tabn 2<CR>
   map g3 :tabn 3<CR>
@@ -116,17 +114,37 @@ set undodir=.undo/,~/.vimtmp/,/tmp/,.
 set fileformat=unix
 
 
+" ================================
+" Auto-suggestions
+" ================================
+
+let g:loaded_youcompleteme = 1 " 0: Enable YCM; 1: Disable YCM (used when Copilot is available)
+" let g:copilot_filetypes = { '*': v:false } " Disable Copilot
+highlight CopilotSuggestion guifg=#90ACC0 ctermfg=10 " Change Copilot suggestion color
+
+
+" ================================
+" Plugins
 " Follow github.com/tpope/vim-pathogen
+" ================================
+
 execute pathogen#infect()
 
 filetype plugin indent on
 
+
+" =================================
+" Set cursor shape for different modes
+" =================================
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 let &t_te.="\e[0 q"
 
 
+" =================================
+" Specific Commands for Filetype
+" =================================
 " Set sage syntax
 augroup filetypedetect
   au! BufRead,BufNewFile *.sage,*.spyx,*.pyx setfiletype python
