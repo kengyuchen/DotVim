@@ -102,6 +102,9 @@ if version >= 700
 
 end
 
+" Window key binding
+map <leader>w <C-w>
+
 " Crontabs must be edited in place
 au BufRead /tmp/crontab* :set backupcopy=yes
 
