@@ -105,6 +105,17 @@ end
 " Window key binding
 map <leader>w <C-w>
 
+" Sync all windows to the current line position
+function! SyncBufferWindowsToCursor()
+	let current_win = winnr() " Get the current window number
+	let current_buf = bufnr('%') " Get the current buffer number
+	let current_line = line('.') " Get the current line number
+	windo if bufnr('%') == current_buf | execute current_line | endif 
+	" Move to the original window
+	execute current_win . "wincmd w"
+endfunction
+nnoremap <leader>sl :call SyncBufferWindowsToCursor()<CR>
+
 " Crontabs must be edited in place
 au BufRead /tmp/crontab* :set backupcopy=yes
 
