@@ -14,3 +14,6 @@
 [submodule "bundle/copilot.vim"]
 	path = bundle/copilot.vim
 	url = https://github.com/github/copilot.vim
+[submodule "bundle/targets.vim"]
+	path = bundle/targets.vim
+	url = https://github.com/wellle/targets.vim.git
