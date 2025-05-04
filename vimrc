@@ -116,6 +116,8 @@ function! SyncBufferWindowsToCursor()
 endfunction
 nnoremap <leader>sl :call SyncBufferWindowsToCursor()<CR>
 
+set splitright
+
 " Crontabs must be edited in place
 au BufRead /tmp/crontab* :set backupcopy=yes
 
@@ -163,3 +165,5 @@ let &t_te.="\e[0 q"
 augroup filetypedetect
   au! BufRead,BufNewFile *.sage,*.spyx,*.pyx setfiletype python
 augroup END
+
+autocmd Filetype tex inoremap $ $$<Left>
