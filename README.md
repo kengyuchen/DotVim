@@ -1,19 +1,32 @@
 
 
-Installation:
+## Installation
+Install with plugin
+
+    git clone --recursive https://github.com/kengyuchen/DotVim.git ~/.vim
+
+If already cloned
+
+    git submodule update --init --recursive
+
+Or install without submodule plugin
 
     git clone https://github.com/kengyuchen/DotVim.git ~/.vim
 
-Create symlinks:
+## Symbolic Link
 
     ln -s ~/.vim/vimrc ~/.vimrc
     ln -s ~/.vim/gvimrc ~/.gvimrc
 
-Switch to the `~/.vim` directory, and fetch submodules:
+## Plugin
+Add a plugin
 
-    cd ~/.vim
-    git submodule init
-    git submodule update
+    git submodule add https://github.com/<plugin-url> ~/.vim/bundle/<plugin-name>
+
+Update a plugin
+
+    cd ~/.vim/bundle/<plugin-name>
+    git pull origin main
 
 
 ### Reference
