@@ -17,3 +17,6 @@
 [submodule "bundle/targets.vim"]
 	path = bundle/targets.vim
 	url = https://github.com/wellle/targets.vim.git
+[submodule "bundle/vimtex"]
+	path = bundle/vimtex
+	url = https://github.com/lervag/vimtex.git

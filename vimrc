@@ -44,6 +44,7 @@ hi Pmenu ctermfg=15 ctermbg=0 " Change YouCompleteMe panel color
 
 set background=dark
 set nu
+set relativenumber
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -147,6 +148,11 @@ highlight CopilotSuggestion guifg=#90ACC0 ctermfg=10 " Change Copilot suggestion
 execute pathogen#infect()
 
 filetype plugin indent on
+
+
+" VimTex Configuration
+let g:vimtex_view_method = 'skim'
+let g:vimtex_quickfix_open_on_warning = 0
 
 
 " =================================
