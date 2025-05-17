@@ -151,8 +151,9 @@ function! CommentLine()
   elseif file_name =~ '\.[kc]\?sh$' || file_name =~ '\.pl$' || file_name =~ '\.pm$'
     execute ":silent! normal ^i#\<ESC>\<down>^"
   " for .tex files use %
+  " Changed by KYC
   elseif file_name =~ '\.tex$' || file_name =~ '\.nw$'
-    execute ":silent! normal ^i%\<ESC>\<down>^"
+    execute ":silent! normal ^i% \<ESC>\<down>^"
   " for fortran 77 files use C on first column 
   elseif file_name =~ '\.f$' || file_name =~ '\.F$'
     execute ":silent! normal ^gIC\<ESC>\<down>^"
@@ -198,8 +199,9 @@ function! UnCommentLine()
     execute ":silent! normal :nohlsearch\<CR>:s/<!--//\<CR>=="
     execute ":silent! normal :nohlsearch\<CR>:s/-->//\<CR>=="
   " for .tex use %
+  " Changed by KYC
   elseif file_name =~ '\.tex$' || file_name =~ '\.nw$'
-    execute ":silent! normal :nohlsearch\<CR>:s/%/\<CR>:nohlsearch\<CR>"
+    execute ":silent! normal :nohlsearch\<CR>:s/% /\<CR>:nohlsearch\<CR>"
   " for fortran 77 files use C on first column 
   elseif file_name =~ '\.f$' || file_name =~ '\.F$'
     execute ":silent! normal ^x\<ESC>\<down>^"
@@ -263,8 +265,9 @@ function! RangeCommentLine()
   elseif file_name =~ '\.[kc]\?sh$' || file_name =~ '\.pl$' || file_name =~ '\.pm$'
     execute ":silent! normal :s/\\S/\\#\\0/\<CR>:nohlsearch<CR>"
   " for .tex use %
+  " Changed by KYC
   elseif file_name =~ '\.tex$' || file_name =~ '\.nw$'
-    execute ":silent! normal :s/\\S/\\%\\0/\<CR>:nohlsearch<CR>"
+    execute ":silent! normal :s/\\S/\\% \\0/\<CR>:nohlsearch<CR>"
   " for fortran 77 files use C on first column 
   elseif file_name =~ '\.f$' || file_name =~ '\.F$'
     execute ":silent! normal ^gIC\<ESC>\<down>^"
@@ -308,8 +311,9 @@ function! RangeUnCommentLine()
   elseif file_name =~ '\.[kc]\?sh$' || file_name =~ '\.pl$' || file_name =~ '\.pm$'
     execute ":silent! normal :s/\\#//\<CR>:nohlsearch\<CR>"
   " for .tex use %
+  " Changed by KYC
   elseif file_name =~ '\.tex$' || file_name =~ '\.nw$'
-    execute ":silent! normal :s/%/\<CR>:nohlsearch\<CR>"
+    execute ":silent! normal :s/% /\<CR>:nohlsearch\<CR>"
   " for fortran 77 files use C on first column 
   elseif file_name =~ '\.f$' || file_name =~ '\.F$'
     execute ":silent! normal ^x\<ESC>\<down>^"
