@@ -7,18 +7,18 @@
 
 " If no screen, use color term
 if ($TERM == "vt100")
-  " xterm-color / screen
-  set t_Co=8
-  set t_AF=[1;3%p1%dm
-  set t_AB=[4%p1%dm
+	" xterm-color / screen
+	set t_Co=8
+	set t_AF=[1;3%p1%dm
+	set t_AB=[4%p1%dm
 endif
 
 if filereadable($VIMRUNTIME . "/vimrc_example.vim")
- so $VIMRUNTIME/vimrc_example.vim
+	so $VIMRUNTIME/vimrc_example.vim
 endif
 
 if filereadable($VIMRUNTIME . "/macros/matchit.vim")
- so $VIMRUNTIME/macros/matchit.vim
+	so $VIMRUNTIME/macros/matchit.vim
 endif
 
 " ================================
@@ -70,6 +70,11 @@ set noshowmode " -- INSERT -- is no longer used with lightline.vim installed
 set cursorline
 set shortmess-=S
 
+" Enable Ctrl+S to save
+nnoremap <C-s> :w<CR>
+inoremap <C-s> <Esc>:w<CR>a
+vnoremap <C-s> <Esc>:w<CR>gv
+
 " VIM 6.0,
 if version >= 600
     set nohlsearch
@@ -83,23 +88,23 @@ endif
 " Tab key binding
 if version >= 700
   
-  map g1 :tabn 1<CR>
-  map g2 :tabn 2<CR>
-  map g3 :tabn 3<CR>
-  map g4 :tabn 4<CR>
-  map g5 :tabn 5<CR>
-  map g6 :tabn 6<CR>
-  map g7 :tabn 7<CR>
-  map g8 :tabn 8<CR>
-  map g9 :tabn 9<CR>
-  map g0 :tabn 10<CR>
-  map gc :tabnew<CR>
-  map gn :tabn<CR>
-  map gp :tabp<CR>
+	map g1 :tabn 1<CR>
+	map g2 :tabn 2<CR>
+	map g3 :tabn 3<CR>
+	map g4 :tabn 4<CR>
+	map g5 :tabn 5<CR>
+	map g6 :tabn 6<CR>
+	map g7 :tabn 7<CR>
+	map g8 :tabn 8<CR>
+	map g9 :tabn 9<CR>
+	map g0 :tabn 10<CR>
+	map gc :tabnew<CR>
+	map gn :tabn<CR>
+	map gp :tabp<CR>
 
-  highlight TabLineSel term=bold,underline cterm=bold,underline ctermfg=7 ctermbg=0
-  highlight TabLine    term=bold cterm=bold
-  highlight clear TabLineFill
+	highlight TabLineSel term=bold,underline cterm=bold,underline ctermfg=7 ctermbg=0
+	highlight TabLine    term=bold cterm=bold
+	highlight clear TabLineFill
 
 end
 
@@ -118,6 +123,7 @@ endfunction
 nnoremap <leader>sl :call SyncBufferWindowsToCursor()<CR>
 
 set splitright
+set splitbelow
 
 " Crontabs must be edited in place
 au BufRead /tmp/crontab* :set backupcopy=yes
@@ -158,10 +164,31 @@ let g:vimtex_quickfix_open_on_warning = 0
 " =================================
 " Set cursor shape for different modes
 " =================================
-let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-let &t_SR = "\<Esc>]50;CursorShape=2\x7"
-let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-let &t_te.="\e[0 q"
+
+if empty($TMUX)
+	let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+	let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+	let &t_SR = "\<Esc>]50;CursorShape=2\x7" " Underline in replace mode
+else
+	let &t_EI = "\e[1 q" " Block in normal mode
+	let &t_SI = "\e[5 q" " Vertical bar in insert mode
+	let &t_SR = "\e[4 q" " Underline in replace mode
+endif
+
+let &t_te .= "\e[0 q" " Reset to default cursor shape
+
+
+" =================================
+" tmux specific setting
+" =================================
+if exists('+termguicolors')
+	let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+	set termguicolors
+	set ttimeout
+	set ttimeoutlen=1
+	set ttyfast
+endif
 
 
 " =================================
@@ -169,7 +196,7 @@ let &t_te.="\e[0 q"
 " =================================
 " Set sage syntax
 augroup filetypedetect
-  au! BufRead,BufNewFile *.sage,*.spyx,*.pyx setfiletype python
+	au! BufRead,BufNewFile *.sage,*.spyx,*.pyx setfiletype python
 augroup END
 
 autocmd Filetype tex inoremap $ $$<Left>
