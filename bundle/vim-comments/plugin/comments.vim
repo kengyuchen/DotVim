@@ -202,6 +202,7 @@ function! UnCommentLine()
   " Changed by KYC
   elseif file_name =~ '\.tex$' || file_name =~ '\.nw$'
     execute ":silent! normal :nohlsearch\<CR>:s/% /\<CR>:nohlsearch\<CR>"
+    execute ":silent! normal :nohlsearch\<CR>:s/%/\<CR>:nohlsearch\<CR>"
   " for fortran 77 files use C on first column 
   elseif file_name =~ '\.f$' || file_name =~ '\.F$'
     execute ":silent! normal ^x\<ESC>\<down>^"
@@ -314,6 +315,7 @@ function! RangeUnCommentLine()
   " Changed by KYC
   elseif file_name =~ '\.tex$' || file_name =~ '\.nw$'
     execute ":silent! normal :s/% /\<CR>:nohlsearch\<CR>"
+    execute ":silent! normal :s/%/\<CR>:nohlsearch\<CR>"
   " for fortran 77 files use C on first column 
   elseif file_name =~ '\.f$' || file_name =~ '\.F$'
     execute ":silent! normal ^x\<ESC>\<down>^"
