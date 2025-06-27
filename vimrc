@@ -75,6 +75,20 @@ nnoremap <C-s> :w<CR>
 inoremap <C-s> <Esc>:w<CR>a
 vnoremap <C-s> <Esc>:w<CR>gv
 
+" Enable system clipboard shortcuts
+" To copy (only in visual mode), use Ctrl+y
+" To paste , use cmd + v in insert mode or "+p in normal mode
+" Ctrl + p is registerd for fzf
+vnoremap <C-y> "+y 
+
+" Enable inserting new line without leaving normal mode
+nnoremap <leader>j :call append(line("."), '') \| normal! j<CR>
+nnoremap <leader>k :call append(line(".") - 1, '') \| normal! k<CR>
+
+
+nnoremap <C-h> :%s/
+
+
 " VIM 6.0,
 if version >= 600
     set nohlsearch
@@ -175,7 +189,7 @@ else
 	let &t_SR = "\e[4 q" " Underline in replace mode
 endif
 
-let &t_te .= "\e[0 q" " Reset to default cursor shape
+let &t_te .= "\e[5 q" " Reset to default cursor shape
 
 
 " =================================
@@ -200,3 +214,7 @@ augroup filetypedetect
 augroup END
 
 autocmd Filetype tex inoremap $ $$<Left>
+
+set rtp+=/opt/homebrew/opt/fzf
+nnoremap <C-p> :Files<Cr>
+let g:fzf_action = { 'enter': 'tab split' }
