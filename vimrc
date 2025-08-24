@@ -64,6 +64,7 @@ set bs=2		" allow backspacing over everything in insert mode
 set ai			" always set autoindenting on
 set viminfo='20,\"50	" read/write a .viminfo file, don't store more
 set showmatch
+set showcmd
 set whichwrap+=<,>,[,]	" allow going to the next/last line with left/arrow keys
 set laststatus=2 " always show the status line
 set noshowmode " -- INSERT -- is no longer used with lightline.vim installed
@@ -217,4 +218,8 @@ autocmd Filetype tex inoremap $ $$<Left>
 
 set rtp+=/opt/homebrew/opt/fzf
 nnoremap <C-p> :Files<Cr>
-let g:fzf_action = { 'enter': 'tab split' }
+let g:fzf_action = {
+	\ 'enter': 'tab split',
+	\ 'ctrl-t': 'tab split',
+	\ 'ctrl-x': 'split',
+	\ 'ctrl-v': 'vsplit'}
